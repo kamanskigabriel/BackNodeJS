@@ -1,0 +1,10 @@
+import express from 'express'
+import controlleratendimento from '../controller/atendimento.js'
+
+const router = express.Router()
+router.get("/buscar", ControllerAtendimento.Buscar)
+router.get("/detalhe/:id",ControllerAtendimento.Detalhe)
+router.post("/criar", ControllerAtendimento.Criar)
+router.put("/alterar/:id", ControllerAtendimento.Alterar)
+router.delete("/deletar/:id", ControllerAtendimento.Deletar)
+export default router
