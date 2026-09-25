@@ -1,14 +1,13 @@
 import express from 'express'
-import autMiddleware from '../middleware/clientes'
+import autMiddleware from '../middleware/clientes.js'
 import clientes from '../controller/clientes.js'
 
 const router = express.Router()
 
-router.post("/login", controllerclientes.Login)
-router.get("/buscar", autMiddleware, controllerclientes, Buscar)
-router.get("/detalhe", autMiddleware, controllerclientes, Detalhe)
-router.post("/criar", autMiddleware, controllerclientes, Criar)
-router.put('/Alterar', autMiddleware, controllerclientes, Alterar)
-router.delete('delete', autMiddleware, controllerclientes, Delete)
-
+router.post("/login", clientes.Login)
+router.get("/buscar", autMiddleware, clientes.Buscar)
+router.get("/detalhe/:id", autMiddleware, clientes.Detalhe)
+router.post("/criar", autMiddleware, clientes.Criar)
+router.put("/alterar", autMiddleware, clientes.Alterar)
+router.delete("/deletar/:id", autMiddleware, clientes.Deletar)
 export default router

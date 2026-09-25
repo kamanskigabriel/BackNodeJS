@@ -1,23 +1,27 @@
 import database from "../config/database.js"
 
 class RepositoryCliente {
+
     async Find() {
         const atendimentos = await atendimento.findAll()
         return atendimentos
     }
+
     async FindById(id) {
         const atendimentoDetalhes = await atendimento.findByPk(id)
 
         return atendimentoDetalhes
     }
-    async Create() {
+
+    async Create(email, senha) {
         const atendimentoCreate = await atendimento.create({ email, senha })
         return atendimentoCreate
     }
-    async Update() {
-      const atendimentoAlterar = await atendimento.findByPk(id)
 
-        if(!atendimentoAlterar) {
+    async Update(id) {
+        const atendimentoAlterar = await atendimento.findByPk(id)
+
+        if (!atendimentoAlterar) {
             throw new Error("Usuario não encontrado")
         }
 
@@ -26,10 +30,11 @@ class RepositoryCliente {
 
         await atendimentoAlterar.save()
     }
+
     async Delete(id) {
         const atendimentoDeletar = await atendimento.findByPk(id)
 
-        if(!atendimentoDeletar){
+        if (!atendimentoDeletar) {
             throw new Error("Usuario não encontrado")
         }
 
@@ -37,6 +42,7 @@ class RepositoryCliente {
 
         return atendimentoDeletar
     }
+    
     async FindByEmail(email) {
         return atendimento.findOne({ where: { email } })
     }

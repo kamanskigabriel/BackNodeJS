@@ -59,13 +59,13 @@ class controlleratendimento {
     }
     async Login(req, res) {
         try {
-            const {email, senha} = req.body
+            const { email, senha } = req.body
             const token = await ServiceAtendimento.Login(email, senha)
             res.status(200).send({
                 token
             })
         } catch (error) {
-            res.status(500).send({mensage:error.message})
+            res.status(500).send({ mensage: error.message })
         }
     }
 }
